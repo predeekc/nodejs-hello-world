@@ -1,0 +1,5 @@
+.*
+!/.gitignore
+!/.jshintrc
+
+node_modules
