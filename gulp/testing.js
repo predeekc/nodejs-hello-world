@@ -1,6 +1,6 @@
 "use strict";
 
-var gulp = require('gulp');  
+var gulp = require('gulp');   
 
 module.exports = function (options) {  
   gulp.task('test', function () {
@@ -16,6 +16,25 @@ module.exports = function (options) {
       watchPaths = _.union(options.sourcePaths, options.testPaths);    
 
     return gulp.watch(watchPaths, ["test"]);  
+  });
+
+  gulp.task("test-coverage", function () { 
+    var istanbul = require('gulp-istanbul'),
+        mocha = require("gulp-mocha"),
+        openBrowser = require("open");
+
+    require('mocha-unfunk-reporter').option('style', 'plain');
+
+    return gulp.src(options.sourcePaths)
+        .pipe(istanbul()) // Covering files
+        .on('end', function () {
+            return gulp.src(options.testPaths, {read: false})
+              .pipe(mocha({ reporter: 'mocha-unfunk-reporter' }))
+              .pipe(istanbul.writeReports()) // Creating the reports after tests run
+              .on('end', function () {
+                openBrowser('./coverage/lcov-report/index.html');
+              });
+        });  
   });
 
   gulp.task('test-debug', function () {

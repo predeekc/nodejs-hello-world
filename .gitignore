@@ -1,5 +1,9 @@
 .*
 !/.gitignore
 !/.jshintrc
+!/.sublime-project
 
 node_modules
+coverage
+
+sublime-gulp.log
