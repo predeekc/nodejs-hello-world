@@ -1,4 +1,30 @@
+<!doctype html>
 <html>
-	<head><title>NodeJs Hello World</title></head>
-	<body>Hello World</body>
+	<head>
+		<title>NodeJs Hello World</title>
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+	</head>
+	<body ng-app="helloWorldApp">	
+		<div class="page-header container">
+		  <h1>Hello World <small>Tasks list</small></h1>
+		</div>
+		<section class="container" ng-view>
+		</section>
+		<!-- build:js(app) scripts/vendor.js -->
+		<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-resource/angular-resource.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<!-- endbuild -->
+
+		<!-- build:js_app(app) scripts/scripts.js -->
+		<script src="scripts/app.js"></script>
+		<script src="scripts/routes.js"></script>
+		<script src="scripts/controllers/tasks.js"></script>
+		<script src="scripts/services/tasks.js"></script>
+		<!-- endbuild -->
+	</body>
 </html>

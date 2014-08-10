@@ -2,8 +2,10 @@
 !/.gitignore
 !/.jshintrc
 !/.sublime-project
+!/.bowerrc
 
 node_modules
 coverage
+client/bower_components
 
 sublime-gulp.log

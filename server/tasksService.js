@@ -6,20 +6,19 @@ module.exports = require("express").Router()
   .param("taskId", lookupTaskById)
   .get("/tasks", getAllTasks)
   .put("/tasks/:taskId", updateTask)
-  .post("/tasks", createTask)
-  .delete("/tasks/:taskId", removeTask);
+  .post("/tasks", createTask);
 
-var TaskList = require("../models/taskList");
+var TaskList = require("./taskList");
 
-function lookupTaskList(req, res, next) {
-  req.taskList = TaskList.get();
+function lookupTaskList(req, res, next) {    
+  req.taskList = TaskList.get();    
   next();
 }
 
 function lookupTaskById(req, res, next, taskId) {
-  taskId = parseInt(taskId);
+  taskId = parseInt(taskId);  
   req.task = req.taskList.getById(taskId);
-
+  
   if (!req.task) {
     return req.send(404);
   }
@@ -31,7 +30,7 @@ function getAllTasks(req, res) {
   res.send(req.taskList.tasks);
 }
 
-function updateTask(req, res) {
+function updateTask(req, res) {  
   req.task.name = req.body.name;
   TaskList.update(req.taskList);
   res.send(req.task);
@@ -43,12 +42,4 @@ function createTask(req, res) {
   TaskList.update(req.taskList);
 
   res.send(newTask);
-}
-
-function removeTask(req, res) {
-  req.taskList.remove(req.task.id);
-
-  TaskList.update(req.taskList);
-
-  res.status(204).end();
 }

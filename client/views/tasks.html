@@ -1,0 +1,23 @@
+<div>
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="task in vm.tasks" ng-click="vm.edit(task)">{{task.name}} <span class="pull-right glyphicon glyphicon-remove" ng-click="vm.remove(task)"></span></li>
+	</ul>
+	<button class="btn" ng-click="vm.new()">New Task</button>
+</div>
+<script type="text/ng-template" id="editTask.html">
+<div class="modal-header">
+	<h3 class="modal-title">{{item.name || 'New Task'}}</h3>
+</div>
+<div class="modal-body">
+	<form role="form">
+		<div class="form-group">
+			<label for="taskName">Task Name</label>
+			<input class="form-control" id="taskName" ng-model="item.name" placeholder="Enter Task Name">
+		</div>		
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="ok()">OK</button>
+	<button class="btn" ng-click="cancel()">Cancel</button>
+</div>
+</script>
