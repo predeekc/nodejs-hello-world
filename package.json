@@ -14,14 +14,16 @@
     "gulp-nodemon": "^1.0.4",
     "should": "^4.0.4",
     "gulp-mocha": "^0.5.2",
-    "gulp-watch": "^0.6.9",    
+    "gulp-watch": "^0.6.9",
     "gulp-spawn-mocha": "^0.1.7-beta.3",
     "mocha-unfunk-reporter": "^0.4.0",
-    "gulp-istanbul": "^0.2.1"
+    "gulp-istanbul": "^0.2.1",
+    "supertest": "^0.13.0"
   },
   "dependencies": {
     "express": "^4.8.2",
     "winston": "^0.7.3",
-    "lodash": "^2.4.1"    
+    "lodash": "^2.4.1",
+    "body-parser": "^1.6.2"
   }
 }

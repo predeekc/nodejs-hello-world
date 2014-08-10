@@ -8,13 +8,15 @@ module.exports = function (options) {
     require('mocha-unfunk-reporter').option('style', 'plain');
     
     return gulp.src(options.testPaths, {read: false})
-      .pipe(mocha({ reporter: 'mocha-unfunk-reporter' }));
+      .pipe(mocha({ reporter: 'mocha-unfunk-reporter' }))
+      .on('error', handleError);
   });
 
   gulp.task("test-watch", ["test"], function () { 
     var _ = require("lodash"),
       watchPaths = _.union(options.sourcePaths, options.testPaths);    
 
+      console.log(JSON.stringify(watchPaths));
     return gulp.watch(watchPaths, ["test"]);  
   });
 
@@ -51,3 +53,9 @@ module.exports = function (options) {
       .on('error', console.warn.bind(console));
   });
 };
+
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
+}
+

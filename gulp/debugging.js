@@ -20,23 +20,30 @@ module.exports = function (options) {
     openBrowser('http://localhost:8080/debug?port=5858');
   });
 
-  gulp.task('serve', function () {
-    var nodemon = require("gulp-nodemon"),
-      openBrowser = require("open");
-
-    var options = {
-      "script": options.startScriptPath,
-      "watch": options.sourcePaths,
-      "ext": "js",
-      "stdout": false,
-      "nodeArgs": ["--debug"]
-    };
-
-    nodemon(options)
-      .on('restart', function () {
-        console.log('restarted!');
-      });
+  gulp.task('server-watch', [ "server" ], function () {
+    var openBrowser = require("open");
+     
     openBrowser('http://localhost:9000');
+
+    gulp.watch(options.sourcePaths, [ "server" ]);    
+  });
+
+  var nodeInstance;
+  gulp.task('server', function () {
+    var spawn = require("child_process").spawn;
+
+    if (nodeInstance) {
+      nodeInstance.kill();
+    }
+    
+    nodeInstance = spawn('node', [ options.startScriptPath ]);
+    nodeInstance.stdout.on('data', function (data) { console.log('' + data); });
+    nodeInstance.stderr.on('data', function (data) { console.log('' + data); });
+    nodeInstance.on('close', function (code) {
+      if (code === 8) {
+        console.log('Error detected, waiting for changes...');
+      }
+    });
   });
 };
 
