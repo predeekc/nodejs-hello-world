@@ -4,11 +4,11 @@
 var gulp = require('gulp'); // jshint ignore:line
 
 var options = {
-  sourcePaths: [ "server/**/*.js", "server.js" ],
+  sourcePaths: ["server/**/*.js", "server.js"],
   startScriptPath: "server.js",
-  testPaths: [ "test/**/*Tests.js" ]
+  testPaths: ["test/**/*Tests.js"]
 };
 
 require("./gulp/debugging")(options);
 require("./gulp/testing")(options);
-
+require("./gulp/build")(options);

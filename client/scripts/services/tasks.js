@@ -11,4 +11,5 @@
       }
     });
   }
+  createTaskService.$inject = ["$resource"];
 }());

@@ -16,4 +16,5 @@
         redirectTo: '/tasks'
       });
   }
+  config.$inject = ["$routeProvider"];
 }());

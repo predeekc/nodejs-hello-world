@@ -50,6 +50,7 @@
         });
     };
   }
+  Controller.$inject = ['Tasks', '$modal'];
 
   function ModalInstanceCtrl($scope, $modalInstance, item) {
     var vm = $scope;
@@ -63,4 +64,5 @@
       $modalInstance.dismiss('cancel');
     };
   }
+  ModalInstanceCtrl.$inject = ['$scope', '$modalInstance', 'item'];
 }());

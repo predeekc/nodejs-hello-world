@@ -4,8 +4,9 @@
 !/.sublime-project
 !/.bowerrc
 
-node_modules
-coverage
+build
 client/bower_components
+coverage
+node_modules
 
 sublime-gulp.log

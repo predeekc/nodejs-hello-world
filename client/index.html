@@ -10,17 +10,19 @@
 		</div>
 		<section class="container" ng-view>
 		</section>
-		<!-- build:js(app) scripts/vendor.js -->
-		<script src="bower_components/lodash/dist/lodash.compat.js"></script>
-		<script src="bower_components/jquery/dist/jquery.js"></script>
+
 		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+		<!-- build:js(client) scripts/vendor.js -->
+		<script src="bower_components/lodash/dist/lodash.js"></script>
+		<script src="bower_components/jquery/dist/jquery.js"></script>		
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="bower_components/angular-resource/angular-resource.js"></script>
 		<script src="bower_components/angular-route/angular-route.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		<!-- endbuild -->
 
-		<!-- build:js_app(app) scripts/scripts.js -->
+		<!-- build:js_app(client) scripts/scripts.js -->
 		<script src="scripts/app.js"></script>
 		<script src="scripts/routes.js"></script>
 		<script src="scripts/controllers/tasks.js"></script>
