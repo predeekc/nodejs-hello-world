@@ -63,5 +63,21 @@ describe("TasksService tests", function () {
       });  
   });
 
+  it("remove a task", function (done) {
+    request(app)
+      .del('/api/tasks/2')      
+      .expect('Content-Type', /json/)      
+      .expect(204)    
+      .end(function () {
+        request(app)
+          .get('/api/tasks')
+          .expect('Content-Type', /json/)      
+          .expect(200, [
+            { id: 1, name: "Task One", index: 0 },
+            { id: 3, name: "Task Three", index: 1 }
+          ])
+          .end(done);
+      });  
+  });
 
 });

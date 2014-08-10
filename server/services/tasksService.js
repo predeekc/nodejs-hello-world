@@ -6,7 +6,8 @@ module.exports = require("express").Router()
   .param("taskId", lookupTaskById)
   .get("/tasks", getAllTasks)
   .put("/tasks/:taskId", updateTask)
-  .post("/tasks", createTask);
+  .post("/tasks", createTask)
+  .delete("/tasks/:taskId", removeTask);
 
 var TaskList = require("../models/taskList");
 
@@ -42,4 +43,12 @@ function createTask(req, res) {
   TaskList.update(req.taskList);
 
   res.send(newTask);
+}
+
+function removeTask(req, res) {
+  req.taskList.remove(req.task.id);
+
+  TaskList.update(req.taskList);
+
+  res.send(204);  
 }
